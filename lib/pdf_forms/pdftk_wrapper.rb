@@ -43,6 +43,9 @@ module PdfForms
       append_options args, fill_options
       result = call_pdftk *args
 
+      p "===pdf-form"
+      p "tmp:#{tmp} args:#{args} fill_options: #{fill_options}"
+
       unless File.readable?(destination) && File.size(destination) > 0
         fdf_path = nil
         begin
