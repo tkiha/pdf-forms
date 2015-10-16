@@ -45,6 +45,7 @@ module PdfForms
 
       p "===pdf-form"
       p "tmp:#{tmp} args:#{args} fill_options: #{fill_options}"
+      p "file: #{File.read(tmp, :encoding => Encoding::UTF_8)}"
 
       unless File.readable?(destination) && File.size(destination) > 0
         fdf_path = nil
