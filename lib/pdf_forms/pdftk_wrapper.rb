@@ -45,6 +45,7 @@ module PdfForms
 
       p "===pdf-form"
       p "tmp:#{tmp} args:#{args} fill_options: #{fill_options}"
+      p "fdf:#{fdf} "
       p "data:#{data} "
       p "file utf-8: #{File.read(tmp, :encoding => Encoding::UTF_8)}"
       # p "file: #{File.read(tmp, :encoding => Encoding::UTF_8)}"
@@ -88,6 +89,8 @@ module PdfForms
     # returns the commands output, check general execution success with
     # $?.success?
     def call_pdftk(*args)
+      p " pdftk exec : #{args.flatten}"
+
       SafeShell.execute pdftk, *(args.flatten)
     end
 
@@ -117,6 +120,7 @@ module PdfForms
 
     def data_format(data)
       data_format = options[:data_format] || 'Fdf'
+      p " options: #{options[:data_format]}"
       PdfForms.const_get(data_format).new(data)
     end
 
