@@ -23,7 +23,13 @@ module PdfForms
     # The pdftk binary may also be explecitly specified:
     # PdftkWrapper.new('/usr/bin/pdftk', :flatten => true, :encrypt => true, :encrypt_options => 'allow Printing')
     def initialize(*args)
+      p " initialize args:#{args} "
+
+
       pdftk, options = normalize_args *args
+      p " initialize pdftk:#{pdftk} "
+      p " initialize options:#{options} "
+
       @pdftk = Cliver.detect! pdftk
       raise "pdftk executable #{@pdftk} not found" unless call_pdftk('-h') && $?.success?
       @options = options
