@@ -120,6 +120,7 @@ module PdfForms
 
     def data_format(data)
       data_format = options[:data_format] || 'Fdf'
+      p " options: #{options}"
       p " options: #{options[:data_format]}"
       PdfForms.const_get(data_format).new(data)
     end
